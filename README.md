@@ -1,4 +1,7 @@
 # Regex
+
+[![tests](https://github.com/ximtech/Regex/actions/workflows/cmake-ci.yml/badge.svg)](https://github.com/ximtech/Regex/actions/workflows/cmake-ci.yml)
+
 ***Forked from*** [tiny-regex-c](https://github.com/kokke/tiny-regex-c/blob/master/README.md)
 
 Fully refactored Regex library. Fixed all issues and added lazy operators. 
