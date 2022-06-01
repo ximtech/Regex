@@ -193,7 +193,7 @@ static void resolveEscapedCharacterClasses(RegexCompiler *regexCompiler, const c
         regexCompiler->patternIndex++;   // Skip the escape-char
 
         RegexPatternType patternType;
-        switch (regexCompiler->patternIndex) {
+        switch (pattern[regexCompiler->patternIndex]) {
             case 's':
                 patternType = REGEX_WHITESPACE;
                 break;
