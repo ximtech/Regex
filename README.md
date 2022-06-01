@@ -16,7 +16,7 @@ Also improved Regex compilation and removed static allocation. Code coverage wit
   > gcc -Os -c Regex.c
   > size Regex.o
      text    data     bss     dec     hex filename
-     4700       0       0    4700    125c Regex.o
+     3732       0       0    3732    125c Regex.o
       
   ```
 

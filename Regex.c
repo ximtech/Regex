@@ -1,7 +1,6 @@
 #include "Regex.h"
 
 #define END_LINE '\0'
-#define CHAR_COUNT 255
 #define MAX_QUANTIFICATION_VALUE  1024  // Max in {M,N} - Denotes the minimum M and the maximum N regexMatch count.
 
 typedef struct InnerRegexCompiler {     // The sizes of the two static arrays below substantiates the static RAM usage of this module.
@@ -11,15 +10,6 @@ typedef struct InnerRegexCompiler {     // The sizes of the two static arrays be
     uint16_t classCharIndex;
     bool isQuantifiable;    // is the last node quantifiable
 } RegexCompiler;
-
-static const RegexPatternType ESCAPED_CHAR_CLASS_RESOLVER[CHAR_COUNT] = {
-        ['s'] = REGEX_WHITESPACE,
-        ['S'] = REGEX_NOT_WHITESPACE,
-        ['w'] = REGEX_ALPHA,
-        ['W'] = REGEX_NOT_ALPHA,
-        ['d'] = REGEX_DIGIT,
-        ['D'] = REGEX_NOT_DIGIT
-};
 
 static inline void setBeginMetaChar(RegexCompiler *regexCompiler);
 static inline void setDollarEndMetaChar(RegexCompiler *regexCompiler);
@@ -202,7 +192,31 @@ static void resolveEscapedCharacterClasses(RegexCompiler *regexCompiler, const c
         regexCompiler->isQuantifiable = true;
         regexCompiler->patternIndex++;   // Skip the escape-char
 
-        RegexPatternType patternType = ESCAPED_CHAR_CLASS_RESOLVER[pattern[regexCompiler->patternIndex]];
+        RegexPatternType patternType;
+        switch (regexCompiler->patternIndex) {
+            case 's':
+                patternType = REGEX_WHITESPACE;
+                break;
+            case 'S':
+                patternType = REGEX_NOT_WHITESPACE;
+                break;
+            case 'w':
+                patternType = REGEX_ALPHA;
+                break;
+            case 'W':
+                patternType = REGEX_NOT_ALPHA;
+                break;
+            case 'd':
+                patternType = REGEX_DIGIT;
+                break;
+            case 'D':
+                patternType = REGEX_NOT_DIGIT;
+                break;
+            default:
+                patternType = 0;
+                break;
+        }
+
         if (patternType > 0) {  // Check the next Meta-character:
             setRegexPatternType(patternType, regexCompiler);
         } else {
