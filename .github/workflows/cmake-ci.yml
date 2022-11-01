@@ -21,7 +21,7 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Configure Tests CMake
-      run: cmake -S ${{github.workspace}}/Tests -B ${{github.workspace}}/Tests/cmake-build-debug -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+      run: cmake -S ${{github.workspace}}/Tests -B ${{github.workspace}}/Tests/cmake-build-debug -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}} -DCMAKE_CXX_FLAGS=--coverage -DCMAKE_C_FLAGS=--coverage
 
     - name: Build Tests
       working-directory: ${{github.workspace}}/Tests
@@ -30,3 +30,12 @@ jobs:
     - name: Tests
       working-directory: ${{github.workspace}}/Tests/cmake-build-debug
       run: ./Tests
+
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v3
+      with:
+        gcov: true
+        files: "*Regex.c.gcov, *Regex.h.gcov"
+        token: ${{ secrets.CODECOV_TOKEN }}
+        fail_ci_if_error: true
+        verbose: true
