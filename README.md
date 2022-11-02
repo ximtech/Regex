@@ -1,5 +1,6 @@
 # Regex
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/7ba119a3c4de43d9ba4cc218ff406881)](https://app.codacy.com/gh/ximtech/Regex?utm_source=github.com&utm_medium=referral&utm_content=ximtech/Regex&utm_campaign=Badge_Grade_Settings)
 [![tests](https://github.com/ximtech/Regex/actions/workflows/cmake-ci.yml/badge.svg)](https://github.com/ximtech/Regex/actions/workflows/cmake-ci.yml)
 [![codecov](https://codecov.io/gh/ximtech/Regex/branch/main/graph/badge.svg?token=3WSE6BR59E)](https://codecov.io/gh/ximtech/Regex)
 
