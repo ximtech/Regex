@@ -2,6 +2,7 @@
 
 [![tests](https://github.com/ximtech/Regex/actions/workflows/cmake-ci.yml/badge.svg)](https://github.com/ximtech/Regex/actions/workflows/cmake-ci.yml)
 [![codecov](https://codecov.io/gh/ximtech/Regex/branch/main/graph/badge.svg?token=3WSE6BR59E)](https://codecov.io/gh/ximtech/Regex)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/10afb9b293e546679157ccb93cd069b3)](https://www.codacy.com/gh/ximtech/Regex/dashboard)
 
 ***Forked from*** [tiny-regex-c](https://github.com/kokke/tiny-regex-c/blob/master/README.md)
 
